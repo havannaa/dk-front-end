@@ -6,9 +6,6 @@ const isEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
 const isPhone = /^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4,6})$/ // us
 const isZip = /^[0-9]{5}([- /]?[0-9]{4})?$/ // us
 const isNumber = /^\d+$/
-const isValidPassword = /^.{8,}$/
-const isValidZip = /^\d{5}$/
-const isValidState = /^va$|^VA$/
 
 // Applied to all fields
 
@@ -24,7 +21,7 @@ export declare type ValidationSchema = Record<
     value?: any
     error?: string
     required?: boolean
-    validate?: 'text' | 'number' | 'email' | 'phone' | 'zip' | 'checkbox' | 'select' | 'password'
+    validate?: 'text' | 'number' | 'email' | 'phone' | 'zip' | 'checkbox' | 'select'
     minLength?: number
     maxLength?: number
     helperText?: string
@@ -151,21 +148,13 @@ export function StepsProvider({ children }: ProviderProps) {
             if (value && !isEmail.test(value)) error = helperText || 'Please enter a valid email address.'
             break
 
-          case 'password':
-            if (value && !isValidPassword.test(value)) error = helperText || 'Password must be at least 8 characters'
-            break
-
           case 'phone':
             if (value && !isPhone.test(value))
               error = helperText || 'Please enter a valid phone number. i.e: xxx-xxx-xxxx'
             break
 
-          case 'zipCode':
-            if (value && !isValidZip.test(value)) error = helperText || 'Please enter a valid zip code (i.e. xxxxx).'
-            break
-
-          case 'state':
-            if (value && !isValidState.test(value)) error = helperText || 'We are only allowing residents from Virginia (VA). Please email info@northernneckgarbage.com to find out when we will be in your area.'
+          case 'zip':
+            if (value && !isZip.test(value)) error = helperText || 'Please enter a valid zip code.'
             break
 
           case 'checkbox':
@@ -180,11 +169,6 @@ export function StepsProvider({ children }: ProviderProps) {
             break
         }
       }
-
-	// Check if country field and fieldValue is not "northumberland"
-    if (name === 'country' && fieldValue !== 'northumberland') {
-	 error = `We haven't got services in ${fieldValue.charAt(0).toUpperCase() + fieldValue.slice(1)} yet, please email info@northernneckgarbage.com to find out when we will be in your area.`;
-    }
 
       dispatch({ type: 'form-error', name, error })
     },

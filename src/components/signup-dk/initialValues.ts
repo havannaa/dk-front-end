@@ -21,11 +21,19 @@ export const initialValues: ValidationSchema = {
   email: {
     value: '',
     error: '',
+    required: true,
     validate: 'email'
   },
-  gender: {
+  password: {
     value: '',
     error: '',
+    required: true,
+    validate: 'password'
+  },
+  country: {
+    value: '',
+    error: '',
+    required: true,
     validate: 'select'
   },
   date: {
@@ -36,8 +44,26 @@ export const initialValues: ValidationSchema = {
     value: '',
     error: '',
     validate: 'text',
-    minLength: 3,
-    maxLength: 20
+    required: true,
+  },
+  houseNumber: {
+    value: '',
+    error: '',
+    required: true,
+  },
+  streetName: {
+    value: '',
+    error: '',
+    validate: 'text',
+    required: true,
+  },
+  state: {
+    value: '',
+    error: '',
+    validate: 'state',
+    required: true,
+    minLength: 2,
+    maxLength: 2
   },
   agreenemt: {
     value: false,
@@ -50,6 +76,14 @@ export const initialValues: ValidationSchema = {
     value: '',
     error: '',
     validate: 'phone',
+    required: true,
     maxLength: 15
+  },
+  zipCode: {
+    value: '',
+    error: '',
+    validate: 'zipCode',
+    required: true,
+    maxLength: 5
   }
 }

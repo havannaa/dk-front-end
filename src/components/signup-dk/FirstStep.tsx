@@ -7,20 +7,45 @@ import { AppContext } from './Context'
 
 export default function FirstStep() {
   const { formValues, handleChange, handleNext, variant, margin } = useContext(AppContext)
-  const { firstName, lastName, email, gender } = formValues
+  const { firstName, lastName, email, country, password } = formValues
 
   // Check if all values are not empty and if there are some errors
   const isError = useCallback(
     () =>
-      Object.keys({ firstName, lastName, email, gender }).some(
+      Object.keys({ firstName, lastName, email, country, password }).some(
         (name) => (formValues[name].required && !formValues[name].value) || formValues[name].error
       ),
-    [formValues, firstName, lastName, email, gender]
+    [formValues, firstName, lastName, email, country, password]
   )
 
   return (
     <>
       <Grid container spacing={2}>
+        <Grid item xs={12} sm={12}>
+          <TextField
+            variant={variant}
+            margin={margin}
+            fullWidth
+            select
+            SelectProps={{
+              native: true
+            }}
+            label='Country'
+            name='country'
+            value={country.value}
+            onChange={handleChange}
+            error={!!country.error}
+            helperText={country.error}
+            required={country.required}
+          >
+            <option value=''> </option>
+            <option value='northumberland'>Northumberland County</option>
+            <option value='lancaster'>Lancaster County</option>
+            <option value='richmond'>Richmond County</option>
+            <option value='westmoreland'>Westmoreland County</option>
+          </TextField>
+        </Grid>
+
         <Grid item xs={12} sm={6}>
           <TextField
             variant={variant}
@@ -74,23 +99,18 @@ export default function FirstStep() {
             variant={variant}
             margin={margin}
             fullWidth
-            select
-            SelectProps={{
-              native: true
-            }}
-            label='Gender'
-            name='gender'
-            value={gender.value}
+            label='Password'
+            name='password'
+            placeholder='Your password'
+            type='password'
+            value={password.value}
             onChange={handleChange}
-            error={!!gender.error}
-            helperText={gender.error}
-            required={gender.required}
-          >
-            <option value=''> </option>
-            <option value='Male'>Male</option>
-            <option value='Female'>Female</option>
-          </TextField>
+            error={!!password.error}
+            helperText={password.error}
+            required={password.required}
+          />
         </Grid>
+
       </Grid>
 
       <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>

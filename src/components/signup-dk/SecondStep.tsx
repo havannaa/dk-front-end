@@ -10,27 +10,57 @@ import { AppContext } from './Context'
 
 export default function SecondStep() {
   const { formValues, handleChange, handleBack, handleNext, variant, margin } = useContext(AppContext)
-  const { city, date, phone, agreenemt } = formValues
+  const { city, date, phone, agreenemt, houseNumber, streetName, state, zipCode } = formValues
 
   const isError = useCallback(
     () =>
       Object.keys({ city, date, phone, agreenemt }).some(
         (name) => (formValues[name].required && !formValues[name].value) || formValues[name].error
       ),
-    [formValues, city, date, phone, agreenemt]
+    [formValues, city, date, phone, agreenemt, houseNumber, streetName, state, zipCode]
   )
 
   return (
     <>
       <Grid container spacing={2}>
-        <Grid item xs={12}>
+        <Grid item xs={6}>
+          <TextField
+            variant={variant}
+            margin={margin}
+            fullWidth
+            label='House No.'
+            name='houseNumber'
+            placeholder='Enter your House No.'
+            value={houseNumber.value}
+            onChange={handleChange}
+            error={!!houseNumber.error}
+            helperText={houseNumber.error}
+            required={houseNumber.required}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <TextField
+            variant={variant}
+            margin={margin}
+            fullWidth
+            label='Street Name'
+            name='streetName'
+            placeholder='ex. Cella Haven lane...'
+            value={streetName.value}
+            onChange={handleChange}
+            error={!!streetName.error}
+            helperText={streetName.error}
+            required={streetName.required}
+          />
+        </Grid>
+        <Grid item xs={6}>
           <TextField
             variant={variant}
             margin={margin}
             fullWidth
             label='City'
             name='city'
-            placeholder='Enter your city'
+            placeholder='Enter your City'
             value={city.value}
             onChange={handleChange}
             error={!!city.error}
@@ -38,23 +68,22 @@ export default function SecondStep() {
             required={city.required}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={6}>
           <TextField
             variant={variant}
             margin={margin}
             fullWidth
-            InputLabelProps={{
-              shrink: true
-            }}
-            label='Date of birth'
-            name='date'
-            type='date'
-            defaultValue={date.value}
+            label='State'
+            name='state'
+            placeholder='Enter your State Name'
+            value={state.value}
             onChange={handleChange}
-            required={date.required}
+            error={!!state.error}
+            helperText={state.error}
+            required={state.required}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={6}>
           <TextField
             variant={variant}
             margin={margin}
@@ -67,6 +96,21 @@ export default function SecondStep() {
             error={!!phone.error}
             helperText={phone.error}
             required={phone.required}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <TextField
+            variant={variant}
+            margin={margin}
+            fullWidth
+            label='Zip Code'
+            name='zipCode'
+            placeholder='i.e: xxxxx'
+            value={zipCode.value}
+            onChange={handleChange}
+            error={!!zipCode.error}
+            helperText={zipCode.error}
+            required={zipCode.required}
           />
         </Grid>
         <Grid item xs={12}>

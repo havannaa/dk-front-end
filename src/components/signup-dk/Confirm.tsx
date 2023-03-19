@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import Box from '@mui/material/Box'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
@@ -7,10 +7,33 @@ import Divider from '@mui/material/Divider'
 import Button from '@mui/material/Button'
 import { AppContext } from './Context'
 
+import axios from "axios";
+import {useAppDispatch} from "../../redux/hooks";
+import {changeUserLogInfo,addToken} from "../../redux/userLogInfoSlice";
+import { Navigate } from "react-router-dom";
+
 export default function Confirm() {
   const { formValues, handleBack, handleNext } = useContext(AppContext)
-  const { firstName, lastName, email, gender, date, city, phone } = formValues
+  const { firstName, lastName, email, gender, date, city, phone, houseNumber, streetName, state, zipCode } = formValues
 
+  const dispatch = useAppDispatch()
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  if (isLoggedIn) {
+    return <Navigate to="/dashboard" />;
+  }
+	// Convert object to JSON string
+	let jsonString = JSON.stringify(formValues);
+
+	const jsonObj = JSON.parse(jsonString);
+	for (const key in jsonObj) {
+	  if (Object.hasOwnProperty.call(jsonObj, key)) {
+		jsonObj[key] = jsonObj[key].value;
+	  }
+	}
+	delete jsonObj.agreenemt;
+	 delete jsonObj.date;
+	//console.log(JSON.stringify(jsonObj, null, 2));
   const handleSubmit = () => {
     // Remove unwanted properties from formValue object
     let form = {}
@@ -23,9 +46,25 @@ export default function Confirm() {
       return form
     })
     // Do whatever with the values
-    console.log(form)
+    //console.log(form)
     // Show last component or success message
-    handleNext()
+   // handleNext()
+	const values = JSON.stringify(jsonObj, null, 2);
+	console.log(values);
+	axios.post('https://api.mocki.io/v2/b6699541/auth/nngc/registration', values)
+		.then((response) => {
+		console.log('response',response)
+		dispatch(changeUserLogInfo(response.data.customerDTO))
+		dispatch(addToken({token: response.data.token}))
+		if(response.data.token) {
+			console.log(response.data.token);
+		}
+		setIsLoggedIn(true);
+	})
+	.catch((error) => {
+		console.log(error)
+	})
+
   }
 
   return (
@@ -50,13 +89,13 @@ export default function Confirm() {
         <Divider />
 
         <ListItem>
-          <ListItemText primary='Gender' secondary={gender.value || 'Not Provided'} />
+          <ListItemText primary='House No.' secondary={houseNumber.value || 'Not Provided'} />
         </ListItem>
 
         <Divider />
 
         <ListItem>
-          <ListItemText primary='Date of birth' secondary={date.value || 'Not Provided'} />
+          <ListItemText primary='Street Name' secondary={streetName.value || 'Not Provided'} />
         </ListItem>
 
         <Divider />
@@ -68,8 +107,22 @@ export default function Confirm() {
         <Divider />
 
         <ListItem>
-          <ListItemText primary='phone' secondary={phone.value || 'Not Provided'} />
+          <ListItemText primary='State' secondary={state.value || 'Not Provided'} />
         </ListItem>
+
+        <Divider />
+
+        <ListItem>
+          <ListItemText primary='Phone' secondary={phone.value || 'Not Provided'} />
+        </ListItem>
+
+        <Divider />
+
+        <ListItem>
+          <ListItemText primary='Zip Code' secondary={zipCode.value || 'Not Provided'} />
+        </ListItem>
+
+        <Divider />
       </List>
 
       <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 3 }}>
