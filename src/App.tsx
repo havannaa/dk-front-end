@@ -7,7 +7,7 @@ import Home from "./components/home/Home";
 import Footer from "./components/footer/Footer";
 import {useAppSelector} from "./redux/hooks";
 import Login from "./components/login/Login";
-import Signup from "./components/signup/Signup";
+import Signup from "./components/signup-dk/SignUp";
 // @ts-ignore
 import ClassAppointments from "./components/appointment/ClassAppointments.jsx";
 
