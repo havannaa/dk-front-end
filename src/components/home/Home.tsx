@@ -2,8 +2,14 @@ import { Box, Container, Stack } from "@mui/material";
 import React from "react";
 import ImageSlider from "../slider/Slider";
 import Service from "../service/Service";
+import {useAppDispatch} from "../../redux/hooks";
+import {changeTitle} from "../../redux/pageTitleSlice";
 
 const Home = () => {
+    const dispatch = useAppDispatch()
+    React.useEffect(()=>{
+        dispatch( changeTitle('Home'))
+    },[])
   return (
     <Box>
 		<ImageSlider />

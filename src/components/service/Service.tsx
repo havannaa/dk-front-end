@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+//@ts-ignore
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -6,7 +7,11 @@ import './style.css';
 import { services } from './services';
 
 function Service() {
-  const [defaultImage, setDefaultImage] = useState({});
+  const [defaultImage, setDefaultImage] = useState({
+    linkDefault:"",
+
+
+  });
   const settings = {
     dots: true,
     infinite: true,
@@ -44,14 +49,18 @@ function Service() {
     ],
   };
 
+
   return (
     <div className="services">
       <Slider {...settings}>
-        {services.map((item) => (
-          <div className="card">
+        {services.map((item,index) => (
+          <div
+              key={index}
+              className="card">
             <div className="card-top">
               <img
                 src={
+                  // @ts-ignore
                   defaultImage[item.title] === item.title
                     ? defaultImage.linkDefault
                     : item.linkImg

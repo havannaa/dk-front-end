@@ -52,8 +52,9 @@ const Navbar = () => {
           <Twitter />
         </SocialBox>
         <MenuBox sx={{ display: { xs: "none", sm: "none", md: "flex" } }}>
-          {MenuItems.map((item) => (
+          {MenuItems.map((item,index) => (
             <Typography
+                key={index}
               sx={{
                 cursor: "pointer",
                 fontSize: "14px",
@@ -90,8 +91,9 @@ const Navbar = () => {
         }}
       >
         <Box sx={{ width: 350, height: "90vh" }}>
-          {MenuItems.map((item) => (
+          {MenuItems.map((item,index) => (
             <MenuItem
+                key={index}
               sx={{
                 cursor: "pointer",
                 fontSize: "14px",

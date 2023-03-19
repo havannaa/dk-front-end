@@ -1,13 +1,19 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HeaderTop from "./components/headerTop/HeaderTop";
 import Navbar from "./components/navbar/Navbar";
 import NavBottom from "./components/navBottom/NavBottom";
 import Home from "./components/home/Home";
 import Footer from "./components/footer/Footer";
+import {useAppSelector} from "./redux/hooks";
+import Login from "./components/login/Login";
 
 function App() {
+const screenTitle = useAppSelector(state => state.title)
 
+	React.useEffect(() => {
+		document.title = screenTitle.title? screenTitle.title : 'NNGC'
+	}, [screenTitle])
   return (
     <div className="App">
 		<HeaderTop />
@@ -16,6 +22,7 @@ function App() {
 		<BrowserRouter>
 			<Routes>
 			  <Route path="/" element={<Home />} />
+				<Route path="/login" element={<Login />} />
 			</Routes>
 	    </BrowserRouter>
 		<Footer />
