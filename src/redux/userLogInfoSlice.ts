@@ -9,7 +9,6 @@ export const userLogInfoSlice = createSlice({
             id: '',
             name: '',
             email: '',
-            password: '',
             phone: '',
             houseNumber: '',
             streetName: '',
