@@ -15,7 +15,7 @@ import {validateLogin} from "../../components/forms/validate";
 import WizardSignup from "../../components/forms/WizardSignup.jsx";
 import axios from "axios";
 import Error from "../../components/forms/Error";
-import {changeUserLogInfo} from "../../redux/userLogInfoSlice";
+import {changeUserLogInfo,addToken} from "../../redux/userLogInfoSlice";
 
 
 const Login = () => {
@@ -33,8 +33,9 @@ const nav = useNavigate()
         await axios.post('http://localhost:8080/auth/nngc/authenticate', values)
             .then((response) => {
                 console.log('response',response)
-                dispatch(changeUserLogInfo({userInfo:response.data.customer, isLoggedIn: true, token: response.data.token}))
-         if(response.data.customer) {
+                dispatch(changeUserLogInfo(response.data.customerDTO))
+                dispatch(addToken({token: response.data.token}))
+         if(response.data.token) {
              nav('/')
          }
             })

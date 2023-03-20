@@ -6,7 +6,6 @@ import {useAppDispatch} from "./hooks";
 export const userLogInfoSlice = createSlice({
         name:'userLogInfo',
     initialState: {
-
             id: '',
             name: '',
             email: '',
@@ -35,8 +34,12 @@ export const userLogInfoSlice = createSlice({
     reducers: {
         changeUserLogInfo: (state, action) => {
             const mergedState = {...state, ...action.payload}
-            return action.payload;
+            return mergedState;
 
+        },
+        addToken: (state, action) => {
+            const mergedState = {...state, ...action.payload}
+            return mergedState;
         },
         updateToken: (state, action) => {
             const mergedState = {...state, ...action.payload}
@@ -65,4 +68,5 @@ export const updateToken = (token: any) => async () => {
         })
 }
 
-export const {changeUserLogInfo} = userLogInfoSlice.actions
+
+export const {changeUserLogInfo,addToken} = userLogInfoSlice.actions
