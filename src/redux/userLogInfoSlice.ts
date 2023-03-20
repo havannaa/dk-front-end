@@ -34,17 +34,19 @@ export const userLogInfoSlice = createSlice({
     reducers: {
         changeUserLogInfo: (state, action) => {
             const mergedState = {...state, ...action.payload}
+            mergedState.isLoggedIn = true
             return mergedState;
 
         },
         addToken: (state, action) => {
             const mergedState = {...state, ...action.payload}
+            mergedState.isLoggedIn = true
             return mergedState;
         },
         updateToken: (state, action) => {
             const mergedState = {...state, ...action.payload}
+            mergedState.isLoggedIn = true
 
-            console.log(action.payload)
             return mergedState;
         }
 

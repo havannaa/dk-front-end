@@ -8,7 +8,7 @@ const RequireEnabled = () => {
     const userInfo = state?useAppSelector(state => state.userInfo):null
     let location = useLocation();
     console.log('userInfo',userInfo)
-    if(userInfo?.enabled === false){
+    if(userInfo?.token == null){
         return <Navigate to="/login" state={{ from: location }} />;
     }
 
