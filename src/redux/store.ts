@@ -2,7 +2,6 @@ import {combineReducers, configureStore} from '@reduxjs/toolkit';
 
 import {composeWithDevTools} from "@reduxjs/toolkit/dist/devtoolsExtension";
 import {consoleLogStateMiddleware} from "./middleware";
-import logger from "redux-logger";
 import {pageTitleSlice} from "./pageTitleSlice";
 import {userLogInfoSlice} from "./userLogInfoSlice";
 import {persistStore, persistReducer} from "redux-persist";
