@@ -2,6 +2,8 @@ import { Box, Container, Stack } from "@mui/material";
 import React from "react";
 import ImageSlider from "../slider/Slider";
 import Service from "../service/Service";
+import Team from "../team/Team";
+import Testimonial from "../testimonial/Testimonial";
 import {useAppDispatch} from "../../redux/hooks";
 import {changeTitle} from "../../redux/pageTitleSlice";
 
@@ -21,6 +23,8 @@ const Home = () => {
             mt={8}
           >
           </Stack>
+		  <Team />
+		  <Testimonial />
       </Container>
     </Box>
   );

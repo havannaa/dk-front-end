@@ -4,42 +4,42 @@ export const services = [
     title: 'Residential Trash Pickup',
     services: 'We offer residential trash pickup for your home. We have a variety of trash cans to choose from.',
     linkImg:
-      'https://res.cloudinary.com/dfjg2mgcp/image/upload/v1679200846/nngc-services/1_sxxdri.png',
+      'https://res.cloudinary.com/dfjg2mgcp/image/upload/v1679913000/nngc-low-res/services/ux43knggwkeej3bgevmf.png',
   },
   {
     id: 2,
     title: 'Commercial Trash Pickup',
     services: 'We offer commercial trash pickup for your business. We have a variety of trash cans to choose from.',
     linkImg:
-      'https://res.cloudinary.com/dfjg2mgcp/image/upload/v1679200847/nngc-services/2_nhxohs.png',
+      'https://res.cloudinary.com/dfjg2mgcp/image/upload/v1679913034/nngc-low-res/services/jt6v4fuszl7v5jfsdluk.png',
   },
   {
     id: 3,
     title: 'Recycling Pickup',
     services: 'We offer recycling pickup for your home or business. We have a variety of trash cans to choose from.',
     linkImg:
-      'https://res.cloudinary.com/dfjg2mgcp/image/upload/v1679200846/nngc-services/3_em4adm.png',
+      'https://res.cloudinary.com/dfjg2mgcp/image/upload/v1679913080/nngc-low-res/services/hre4eb280yrohmk8ppt4.png',
   },
   {
     id: 4,
     title: 'Yard Waste Pickup',
     services: 'We offer yard waste pickup for your home or business. We have a variety of trash cans to choose from.',
     linkImg:
-      'https://res.cloudinary.com/dfjg2mgcp/image/upload/v1679200846/nngc-services/4_ykmgc5.png',
+      'https://res.cloudinary.com/dfjg2mgcp/image/upload/v1679913158/nngc-low-res/services/u8zf55xaq300hic1gsaj.png',
   },
   {
     id: 5,
     title: 'Roll Off Dumpster Rental',
     services: 'We offer roll off dumpster rental for your home or business. We have a variety of trash cans to choose from.',
     linkImg:
-      'https://res.cloudinary.com/dfjg2mgcp/image/upload/v1679200847/nngc-services/5_wjfqdb.png',
+      'https://res.cloudinary.com/dfjg2mgcp/image/upload/v1679913189/nngc-low-res/services/qxfamwczeo5ybuos6pbh.png',
   },
   {
     id: 6,
     title: 'Construction/Commercial Dumpster Rental',
     services: 'We offer construction/commercial dumpster rental for your home or business. We have a variety of trash cans to choose from.',
     linkImg:
-      'https://res.cloudinary.com/dfjg2mgcp/image/upload/v1679200847/nngc-services/6_rgbb5r.png',
+      'https://res.cloudinary.com/dfjg2mgcp/image/upload/v1679913219/nngc-low-res/services/ufsjyouqn9o3xuwxroio.png',
   },
 ];
 
