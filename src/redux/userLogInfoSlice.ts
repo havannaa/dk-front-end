@@ -7,15 +7,18 @@ export const userLogInfoSlice = createSlice({
         name:'userLogInfo',
     initialState: {
             id: '',
-            name: '',
+            fullName: '',
             email: '',
-            phone: '',
-            houseNumber: '',
-            streetName: '',
-            enabled: false,
-            city: '',
-            state: '',
-            zipCode: '',
+            phoneNumber: '',
+        address: {
+                line1: '',
+                line2: '',
+                city: '',
+                state: '',
+            zipCode: 0,
+        },
+        geoLocation: '',
+                       enabled: false,
         stripeCustomerId: '',
         transactionHistory: [],
            authorities: [
@@ -34,6 +37,7 @@ export const userLogInfoSlice = createSlice({
         changeUserLogInfo: (state, action) => {
             const mergedState = {...state, ...action.payload}
             mergedState.isLoggedIn = true
+            mergedState.loginAttemptCount = state.loginAttemptCount + 1
             return mergedState;
 
         },
