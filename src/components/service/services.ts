@@ -2,6 +2,7 @@ export const services = [
   {
     id: 1,
     title: 'Residential Trash Pickup',
+    productId:'prod_NTexfN4Dfxy2h4',
     services: 'We offer residential trash pickup for your home. We have a variety of trash cans to choose from.',
     linkImg:
       'https://res.cloudinary.com/dfjg2mgcp/image/upload/v1679913000/nngc-low-res/services/ux43knggwkeej3bgevmf.png',
@@ -30,6 +31,7 @@ export const services = [
   {
     id: 5,
     title: 'Roll Off Dumpster Rental',
+    productId: "prod_NTexfN4Dfxy2h4",
     services: 'We offer roll off dumpster rental for your home or business. We have a variety of trash cans to choose from.',
     linkImg:
       'https://res.cloudinary.com/dfjg2mgcp/image/upload/v1679913189/nngc-low-res/services/qxfamwczeo5ybuos6pbh.png',

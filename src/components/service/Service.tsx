@@ -5,6 +5,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './style.css';
 import { services } from './services';
+import {Navigate} from "react-router-dom";
+import Dumpster from "../products/Dumpster";
 
 function Service() {
   const [defaultImage, setDefaultImage] = useState({
@@ -59,6 +61,7 @@ function Service() {
               className="card">
             <div className="card-top">
               <img
+
                 src={
                   // @ts-ignore
                   defaultImage[item.title] === item.title
