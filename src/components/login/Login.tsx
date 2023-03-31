@@ -3,10 +3,10 @@ import * as React from "react";
 import Wizard from "../../components/forms/Wizard";
 // @ts-ignore
 
-import {useAppDispatch} from "../../redux/hooks";
+import {useAppDispatch, useAppSelector} from "../../redux/hooks";
 import {changeTitle} from "../../redux/pageTitleSlice";
-import {Button, Typography} from "@mui/material";
-import {Link, useNavigate} from "react-router-dom";
+import {Box, Button, Typography, Grid} from "@mui/material";
+import {Link, Navigate, useNavigate} from "react-router-dom";
 import {Field, Form} from "react-final-form";
 
 import {validateLogin} from "../../components/forms/validate";
@@ -19,7 +19,7 @@ import {changeUserLogInfo,addToken} from "../../redux/userLogInfoSlice";
 
 
 const Login = () => {
-
+    const user = useAppSelector(state => state.userInfo)
     const dispatch = useAppDispatch()
     React.useEffect(()=>{
         dispatch( changeTitle('Login Form'))
@@ -29,15 +29,13 @@ const nav = useNavigate()
 
         // @ts-ignore
         window.alert("Northern Neck Garbage Thanks you for signing up, Click Log in" + JSON.stringify(values, 0, 2))
-
-        await axios.post('http://localhost:8080/auth/nngc/authenticate', values)
+console.log(values)
+        await axios.post('http://localhost:5000/auth/nngc/authenticate', values)
             .then((response) => {
                 console.log('response',response)
                 dispatch(changeUserLogInfo(response.data.customerDTO))
                 dispatch(addToken({token: response.data.token}))
-         if(response.data.token) {
-             nav('/')
-         }
+
             })
             .catch((error) => {
                 console.log(error)
@@ -45,13 +43,29 @@ const nav = useNavigate()
 
             }
 
-
+    if (user.token) {
+        return <Navigate to="/dashboard" />;
+    }
     // @ts-ignore
     return (
 
-<WizardSignup
-onSubmit={onSubmit}
- >
+
+    <Box mt={0} mb={4}>
+        <Box pb={1} pt={0}>
+            <Grid container>
+                <Grid item xs={12} sm={12}>
+                    <Box sx={{ maxWidth: 400, margin: 'auto', fontFamily: 'Roboto' }}>
+                        <Typography variant="h4" align="center" sx={{
+                            fontWeight: 'bold',
+                            color: '#333',
+                            letterSpacing: '1px',
+                            textTransform: 'uppercase'
+                        }}>
+                            Login
+                        </Typography>
+                        <WizardSignup
+                            onSubmit={onSubmit}
+                        >
     <Wizard.Page
         validate={validateLogin}
     >
@@ -76,7 +90,13 @@ onSubmit={onSubmit}
             <Error name="password" />
         </div>
     </Wizard.Page>
-</WizardSignup>
+                        </WizardSignup>
+                    </Box>
+                </Grid>
+            </Grid>
+        </Box>
+    </Box>
+
 
     )
 }

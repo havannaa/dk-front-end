@@ -8,6 +8,7 @@ import {
   styled,
   Toolbar,
   Typography,
+  ListItemButton, ListItemIcon, ListItemText, List, Link
 } from "@mui/material";
 import {
   Facebook,
@@ -15,8 +16,12 @@ import {
   Menu as MenuIcon,
   Twitter,
 } from "@mui/icons-material/";
+import {useAppSelector} from "../../redux/hooks";
+
 
 const Navbar = () => {
+  const user = useAppSelector(state => state.userInfo);
+
   const StyledToolbar = styled(Toolbar)({
     display: "flex",
     justifyContent: "space-between",
@@ -25,7 +30,7 @@ const Navbar = () => {
     display: "flex",
     gap: 10,
   });
-  const MenuBox = styled(Box)({
+  const MenuBox = styled(List)({
     display: "flex",
     gap: 30,
   });
@@ -38,8 +43,8 @@ const Navbar = () => {
     { Name: "For Business", Link: "#" },
     { Name: "Services", Link: "#" },
     { Name: "Our Story", Link: "#" },
-    { Name: "View Schedule", Link: "#" },
-    { Name: "My Account", Link: "#" },
+    { Name: "View Schedule", Link: user.id ? "/appointment" : "/login" },
+    { Name: "My Account", Link: user.id ? "/dashboard" : "/login" },
     { Name: "Support NNK Christian School", Link: "#" },
   ];
   const [open, SetOpen] = useState(false);
@@ -52,19 +57,25 @@ const Navbar = () => {
           <Twitter />
         </SocialBox>
         <MenuBox sx={{ display: { xs: "none", sm: "none", md: "flex" } }}>
+
           {MenuItems.map((item,index) => (
+
             <Typography
                 key={index}
               sx={{
                 cursor: "pointer",
                 fontSize: "14px",
               }}
-            >
-              {item.Name}
-            </Typography>
-          ))}
-        </MenuBox>
 
+            >
+              <Link href={item.Link} >
+              {item.Name}
+              </Link>
+            </Typography>
+
+          ))}
+
+        </MenuBox>
         <SearchBox>
           <InputBase placeholder="AI Search ..." sx={{ color: "white" }} />
           <MenuIcon

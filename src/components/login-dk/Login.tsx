@@ -17,7 +17,9 @@ const Login = () => {
     return <Navigate to="/dashboard" />;
   }
 
-  const handleSubmit = (e) => {
+
+  // @ts-ignore
+	const handleSubmit = async(e) => {
     e.preventDefault();
     if (email && password) {
       setError('');
@@ -27,7 +29,7 @@ const Login = () => {
 		};
 		const values = JSON.stringify(myJSON);
 		console.log(values);
-		axios.post('https://api.mocki.io/v2/b6699541/auth/nngc/authenticate', values)
+	await axios.post('http://localhost:5000/auth/nngc/authenticate', values)
 			.then((response) => {
 			console.log('response',response)
 			dispatch(changeUserLogInfo(response.data.customerDTO))

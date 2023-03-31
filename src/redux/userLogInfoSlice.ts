@@ -55,7 +55,7 @@ export const userLogInfoSlice = createSlice({
 
 })
 export const updateToken = (token: any) => async () => {
-    await axios.post( ` http://localhost:8080/auth/nngc/confirm?${token}`)
+    await axios.post( ` http://localhost:5000/auth/nngc/confirm?${token}`)
         .then((response) => {
             response.data.customer
           // store.dispatch({type: 'updateToken', payload: response.data.customer})

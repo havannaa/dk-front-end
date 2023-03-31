@@ -6,7 +6,7 @@ import NavBottom from "./components/navBottom/NavBottom";
 import Home from "./components/home/Home";
 import Footer from "./components/footer/Footer";
 import {useAppSelector} from "./redux/hooks";
-import Login from "./components/login-dk/Login";
+import Login from "./components/login/Login";
 import Signup from "./components/signup-dk/SignUp";
 import Dashboard from "./components/dashboard/Dashboard";
 // @ts-ignore
