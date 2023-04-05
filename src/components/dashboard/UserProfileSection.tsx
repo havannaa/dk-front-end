@@ -1,7 +1,38 @@
-import React from "react";
-import { Avatar, Card, CardHeader, Divider, Typography } from "@mui/material";
+import React, { useState } from "react";
+import { Avatar, Card, Modal, TextField, Button, CardHeader, Divider, IconButton, Typography } from "@mui/material";
+import { Edit } from "@mui/icons-material";
 
 const UserProfileSection = ({ userInfo }) => {
+  const [edit, setEdit] = useState(false);
+  const [name, setName] = useState(userInfo.fullName);
+  const [email, setEmail] = useState(userInfo.email);
+  const [phone, setPhone] = useState(userInfo.phoneNumber);
+
+  const handleEditClick = () => {
+	setEdit(true);
+  };
+
+  const handleEditClose = () => {
+	setEdit(false);
+  };
+
+  const handleNameChange = (event) => {
+	setName(event.target.value);
+  }
+
+  const handleEmailChange = (event) => {
+	setEmail(event.target.value);
+  }
+
+  const handlePhoneChange = (event) => {
+	setPhone(event.target.value);
+  }
+
+  const handleEditSubmit = () => {
+	console.log(name, email, phone);
+	handleEditClose();
+  }
+
   return (
     <Card sx={{ mb: 2 }}>
       <CardHeader
@@ -15,6 +46,11 @@ const UserProfileSection = ({ userInfo }) => {
           textTransform: "uppercase",
           borderBottom: "1px solid #ddd",
         }}
+        action={
+          <IconButton aria-label="edit" onClick={handleEditClick}>
+            <Edit sx={{ color: "#26C9FF" }} />
+          </IconButton>
+        }
       />
       <Divider />
       <Typography
@@ -57,6 +93,109 @@ const UserProfileSection = ({ userInfo }) => {
       >
         Phone: {userInfo.phoneNumber}
       </Typography>
+      <Modal
+        open={edit}
+        onClose={handleEditClose}
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description"
+      >
+        <Card
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "80%",
+            maxWidth: 400,
+            bgcolor: "#F0F2F5",
+            p: 2,
+            borderRadius: "8px",
+          }}
+        >
+          <CardHeader
+            title="Update Personal Details"
+            sx={{ bgcolor: "#2C3E50", color: "#fff", textAlign: "center" }}
+          />
+          <Divider />
+          <TextField
+            sx={{
+              mt: 2,
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": {
+                  borderColor: "#2C3E50",
+                },
+                "&:hover fieldset": {
+                  borderColor: "#2C3E50",
+                },
+                "&.Mui-focused fieldset": {
+                  borderColor: "#2C3E50",
+                },
+              },
+            }}
+            label="Name"
+            type="text"
+            value={name}
+            onChange={handleNameChange}
+            fullWidth
+          />
+          <TextField
+            sx={{
+              mt: 2,
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": {
+                  borderColor: "#2C3E50",
+                },
+                "&:hover fieldset": {
+                  borderColor: "#2C3E50",
+                },
+                "&.Mui-focused fieldset": {
+                  borderColor: "#2C3E50",
+                },
+              },
+            }}
+            label="Email"
+            type="email"
+            value={email}
+            onChange={handleEmailChange}
+            fullWidth
+          />
+          <TextField
+            sx={{
+              mt: 2,
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": {
+                  borderColor: "#2C3E50",
+                },
+                "&:hover fieldset": {
+                  borderColor: "#2C3E50",
+                },
+                "&.Mui-focused fieldset": {
+                  borderColor: "#2C3E50",
+                },
+              },
+            }}
+            label="Phone"
+            type="text"
+            value={phone}
+            onChange={handlePhoneChange}
+            fullWidth
+          />
+          <Button
+            sx={{
+              mt: 2,
+              bgcolor: "#2C3E50",
+              color: "#fff",
+              "&:hover": {
+                backgroundColor: "#455A64",
+              },
+            }}
+            variant="contained"
+            onClick={handleEditSubmit}
+          >
+            Submit
+          </Button>
+        </Card>
+      </Modal>
     </Card>
   );
 };
