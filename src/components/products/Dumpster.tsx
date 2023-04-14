@@ -1,9 +1,7 @@
-
-
-import React, { useState, useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
-import { Box, Typography } from "@mui/material";
-import { useParams } from "react-router-dom";
+import {Box, Typography} from "@mui/material";
+
 
 type Product = {
     message: string;
@@ -13,25 +11,23 @@ type Product = {
     description: string;
     imageUrl: string[];
 }
-
-
-const Dumpster = () => {
+const Dumpster  = ( ) => {
     const [product, setProduct] = useState<Product>();
-    const { productId } = useParams<{ productId: string }>();
 
     const fetchProduct = async () => {
         try {
             const response = await axios.get(
-                `http://localhost:5000/auth/stripe/products/${productId}`
+                `http://localhost:5000/auth/stripe/products/prod_NTzwClciqi6zCh`
             );
             setProduct(response.data);
         } catch (error) {
             console.log(error);
         }
     };
+
     useEffect(() => {
-        fetchProduct().then((r) => console.log(r));
-    }, [productId]);
+        fetchProduct().then(r => console.log(r));
+    }, []);
 
     return (
         <Box display="flex" flexDirection="column" alignItems="center">

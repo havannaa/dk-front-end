@@ -1,23 +1,15 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
+import React, {useState} from "react";
 //@ts-ignore
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './style.css';
-import { sliders } from './sliders';
+import {sliders} from './sliders';
 
 function ImageSlider() {
   const [defaultImage, setDefaultImage] = useState({
     linkDefault:""
   });
-  const history = useNavigate();
-
-  const handleSliderClick = (id:any) => {
-    history(`/dumpster/${id}`);
-  };
-
   const settings = {
     dots: true,
     infinite: true,
@@ -61,7 +53,6 @@ function ImageSlider() {
         {sliders.map((item,index) => (
           <div className="sliderCard"
           key={index}
-               onClick={() => handleSliderClick(item.productId)}
           >
 
               <img
