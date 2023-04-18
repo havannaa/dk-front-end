@@ -1,7 +1,9 @@
 import React from "react";
-import { Card, CardHeader, Divider, Grid, Typography } from "@mui/material";
+import {Card, CardHeader, Divider, Typography} from "@mui/material";
+import {useAppSelector} from "../../redux/hooks";
 
-const PaymentSection = ({ userInfo }) => {
+const PaymentSection =  (  ) => {
+     const userInfo = useAppSelector((state) => state.userInfo);
   return (
     <Card sx={{ mb: 2 }}>
       <CardHeader
@@ -43,6 +45,11 @@ const PaymentSection = ({ userInfo }) => {
         }}
       >
         Total Payment: 3
+          {userInfo.transactionHistory.map((transaction) => (
+            <div>
+              <p>{transaction}</p>
+            </div>
+            ))}
       </Typography>
 
       <Typography

@@ -1,13 +1,11 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
-
-import {composeWithDevTools} from "@reduxjs/toolkit/dist/devtoolsExtension";
 import {consoleLogStateMiddleware} from "./middleware";
 import {pageTitleSlice} from "./pageTitleSlice";
 import {userLogInfoSlice} from "./userLogInfoSlice";
-import {persistStore, persistReducer} from "redux-persist";
+import {persistReducer} from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import thunk from "redux-thunk";
-
+import { persistStore } from 'redux-persist';
 const rootReducer = combineReducers({
    userInfo: userLogInfoSlice.reducer,
     title: pageTitleSlice.reducer,
@@ -32,5 +30,5 @@ const store = configureStore({
 
         )
     })
-
-export default store;
+const persistor = persistStore(store)
+export {store, persistor};

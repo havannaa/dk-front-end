@@ -1,4 +1,4 @@
-import { ValidationSchema } from './Context'
+import {ValidationSchema} from './Context'
 
 export const initialValues: ValidationSchema = {
   firstName: {
@@ -30,7 +30,7 @@ export const initialValues: ValidationSchema = {
     required: true,
     validate: 'password'
   },
-  country: {
+  county: {
     value: '',
     error: '',
     required: true,
@@ -82,7 +82,7 @@ export const initialValues: ValidationSchema = {
   zipCode: {
     value: '',
     error: '',
-    validate: 'zipCode',
+    validate: 'zip',
     required: true,
     maxLength: 5
   }

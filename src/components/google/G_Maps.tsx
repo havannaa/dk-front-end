@@ -1,8 +1,9 @@
 // @ts-ignore
-import {GOOGLE_MAPS_API_KEY} from "process.env";
+
 
 import React from 'react'
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import {GoogleMap, useJsApiLoader} from '@react-google-maps/api';
+import {useAppSelector} from "../../redux/hooks";
 
 const containerStyle = {
     width: '400px',
@@ -15,10 +16,20 @@ const center = {
 };
 
 function G_Maps() {
+    const user = useAppSelector(state => state.userInfo);
+	const apiKey = "";
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
-        googleMapsApiKey: GOOGLE_MAPS_API_KEY
+        googleMapsApiKey: apiKey
     })
+    console.log(user)
+    React.useEffect(() => {
+        if(user.token !=''){
+            console.log(user.token)
+            center.lat = user.address.latitude;
+            center.lng = user.address.longitude;
+        }
+    }, [])
 
     const [map, setMap] = React.useState(null)
 //@ts-ignore

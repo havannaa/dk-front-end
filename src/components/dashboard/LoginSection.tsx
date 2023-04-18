@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Avatar, Card, CardHeader, Divider, Typography } from "@mui/material";
+import React, {useState} from "react";
+import {Card, CardHeader, Divider, Typography} from "@mui/material";
+import {UserInfo} from "../../interfaces/UserInfo"
 
-const LoginSection = ({ userInfo }) => {
-  const [responseData, setResponseData] = useState("");
+
+interface LoginSectionProps {
+    userInfo: UserInfo;
+}
+
+const LoginSection:React.FC<LoginSectionProps> = ({ userInfo }) => {
+
 
   return (
     <Card sx={{ mb: 2 }}>
@@ -58,7 +63,7 @@ const LoginSection = ({ userInfo }) => {
           color: "black",
         }}
       >
-        Geolocation: {userInfo.geoLocation}
+
       </Typography>
     </Card>
   );

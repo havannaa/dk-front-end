@@ -1,9 +1,9 @@
 import axios from "axios";
 import {useAppDispatch} from "../../redux/hooks";
-import {changeUserLogInfo,addToken} from "../../redux/userLogInfoSlice";
-import { Navigate } from "react-router-dom";
-import { Box, Grid, Button, TextField, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import {addToken, changeUserLogInfo} from "../../redux/userLogInfoSlice";
+import {Navigate} from "react-router-dom";
+import {Box, Button, Grid, TextField, Typography} from '@mui/material';
+import React, {useState} from 'react';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -29,7 +29,11 @@ const Login = () => {
 		};
 		const values = JSON.stringify(myJSON);
 		console.log(values);
-	await axios.post('http://localhost:5000/auth/nngc/authenticate', values)
+	await axios.post('http://localhost:5000/auth/nngc/authenticate', values,{
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		})
 			.then((response) => {
 			console.log('response',response)
 			dispatch(changeUserLogInfo(response.data.customerDTO))
