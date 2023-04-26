@@ -1,22 +1,12 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import Fullcalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import "./DKAppointment.css";
 import Modal from "@mui/material/Modal";
-import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import {
-  Button,
-  Card,
-  CardHeader,
-  Divider,
-  IconButton,
-  TextField,
-  Select,
-  MenuItem,
-} from "@mui/material";
+import {Button, Card, CardHeader, Divider, MenuItem, Select, TextField,} from "@mui/material";
 
 const DKAppointment = () => {
   const [selectedDate, setSelectedDate] = useState(null);
