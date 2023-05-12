@@ -32,7 +32,7 @@ const screenTitle = useAppSelector(state => state.title)
 				<Route path="/signup" element={<Signup />} />
 				<Route path="/appointment" element={<ClassAppointments/>} />
 				<Route path="/dashboard" element={<Dashboard />} />
-				<Route path="/dumpster" element={<Dumpster />} />
+				<Route path="/dumpster/:productId" element={<Dumpster/>} />
 				<Route path="/res_trash_sub" element={<TrashSubscription/>} />
 			</Routes>
 	    </BrowserRouter>
