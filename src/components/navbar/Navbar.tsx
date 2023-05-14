@@ -20,7 +20,7 @@ const Navbar = () => {
     display: "flex",
     gap: 30,
   });
-
+ 
   const MenuItems = [
     { Name: "For Home", Link: "/" },
     { Name: "For Business", Link: "#" },
