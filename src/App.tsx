@@ -14,6 +14,7 @@ import ClassAppointments from "./components/appointment/ClassAppointments.jsx";
 import Dumpster from "./components/products/Dumpster";
 import TrashSubscription from "./components/products/TrashSubscription";
 import G_Maps from "./components/google/G_Maps";
+import Encoded_GMaps from "./components/google/EncodedG_Maps";
 
 function App() {
 const screenTitle = useAppSelector(state => state.title)
@@ -36,6 +37,9 @@ const screenTitle = useAppSelector(state => state.title)
 				<Route path="/dumpster/:productId" element={<Dumpster/>} />
 				<Route path="/res_trash_sub" element={<TrashSubscription/>} />
 				<Route path='/maps' element={<G_Maps/>} />
+				<Route path='/emaps' element={<Encoded_GMaps/>} />
+				<Route path="*" element={<h1>Not Found</h1>} />
+
 			</Routes>
 
 		<Footer />
