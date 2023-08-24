@@ -26,12 +26,12 @@ const DKAppointment = () => {
 
   const [disabledDates] = useState(["2023-04-12", "2023-04-13"]);
 
-  const dateClickHandler = (info) => {
-    if (disabledDates.includes(info.dateStr)) {
-      setSelectedDate(info.dateStr);
+  const dateClickHandler = (info: { dateStr: string | React.SetStateAction<null>; }) => {
+    if (disabledDates.includes(info.dateStr as string)) {
+      setSelectedDate(info.dateStr as any);
       setModalOpenDisabledDates(true);
     } else {
-      setSelectedDate(info.dateStr);
+      setSelectedDate(info.dateStr as any);
       setModalOpen(true);
     }
   };
@@ -118,7 +118,7 @@ const DKAppointment = () => {
             value={selectedDate}
             type="text"
             fullWidth
-            readOnly
+
           />
           <Select
             sx={{
@@ -139,10 +139,10 @@ const DKAppointment = () => {
             <MenuItem value="recycling-pickup">Recycling Pickup</MenuItem>
             <MenuItem value="yard-waste-pickup">Yard Waste Pickup</MenuItem>
             <MenuItem value="roll-off-dumpster-rental">
-              Roll Off Dumpster Rental
+              Residential Junk Removal
             </MenuItem>
             <MenuItem value="construction-commercial-dumpster-rental">
-              Construction/Commercial Dumpster Rental
+              Business/Commercial Junk Removal
             </MenuItem>
           </Select>
           <Select
@@ -220,7 +220,7 @@ const DKAppointment = () => {
             value={selectedDate}
             type="text"
             fullWidth
-            readOnly
+
           />
           <Select
             sx={{
@@ -242,10 +242,10 @@ const DKAppointment = () => {
             <MenuItem value="recycling-pickup">Recycling Pickup</MenuItem>
             <MenuItem value="yard-waste-pickup">Yard Waste Pickup</MenuItem>
             <MenuItem value="roll-off-dumpster-rental">
-              Roll Off Dumpster Rental
+              Residential Junk Removal
             </MenuItem>
             <MenuItem value="construction-commercial-dumpster-rental">
-              Construction/Commercial Dumpster Rental
+              Business/Commercial Junk Removal
             </MenuItem>
           </Select>
           <Select

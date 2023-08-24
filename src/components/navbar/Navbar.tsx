@@ -28,7 +28,7 @@ const Navbar = () => {
     { Name: "Our Story", Link: "#" },
     { Name: "View Schedule", Link: user.id ? "/appointment" : "/login" },
     { Name: "My Account", Link: user.id ? "/dashboard" : "/login" },
-    { Name: "Support NNK Christian School", Link: "#" },
+    { Name: "Blog/News", Link: "#" },
   ];
   const [open, SetOpen] = useState(false);
   return (

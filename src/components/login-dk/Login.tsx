@@ -67,7 +67,29 @@ const Login = () => {
 								Login
 							</Typography>
 							<form onSubmit={handleSubmit}>
-								{/* ... existing code ... */}
+								<TextField
+									label="Email"
+									variant="outlined"
+									fullWidth
+									type="email"
+									margin="normal"
+									value={email}
+									onChange={(e) => setEmail(e.target.value)}
+								/>
+								<TextField
+									label="Password"
+									variant="outlined"
+									type="password"
+									fullWidth
+									margin="normal"
+									value={password}
+									onChange={(e) => setPassword(e.target.value)}
+								/>
+								{error && (
+									<Typography variant="body2" color="error" mb={2}>
+										{error}
+									</Typography>
+								)}ya
 								<Button
 									type="submit"
 									variant="contained"

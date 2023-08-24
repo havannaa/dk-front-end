@@ -40,7 +40,7 @@ const Signup = () => {
         // @ts-ignore
         window.alert("Northern Neck Garbage Thanks you for signing up, Click Log in" + JSON.stringify(values, 0, 2))
 
-        await axios.post('http://localhost:5000/auth/nngc/registration', values)
+        await axios.post('http://127.0.0.1:5174/auth/nngc/registration', values)
                 .then((response) => {
                 console.log(response)
                 setSent(true)
