@@ -7,9 +7,14 @@ import "./DKAppointment.css";
 import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
 import {Button, Card, CardHeader, Divider, MenuItem, Select, TextField,} from "@mui/material";
+import {useAppSelector} from "../../redux/hooks";
+import axios from "axios";
+import moment from 'moment';
 
 const DKAppointment = () => {
-  const [selectedDate, setSelectedDate] = useState(null);
+    const userInfo = useAppSelector(state => state.userInfo)
+
+    const [selectedDate, setSelectedDate] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalOpenDisabledDates, setModalOpenDisabledDates] = useState(false);
 
@@ -36,13 +41,58 @@ const DKAppointment = () => {
     }
   };
 
-  const handleBookSubmit = () => {
+    const submitAppointment = async () => {
+        try {
+            // Step 1: Verify the API Endpoint
+            const apiEndpoint = "http://localhost:5000/api/appointments"; // Make sure this matches with your Postman endpoint
+
+            // Step 2: Format the date and time to match the backend's expected format
+            const formattedDate = moment(selectedDate).format("DD-MM-YYYY");
+            const formattedTime = moment(time, ["h:mm A"]).format("HH:mm:ss");
+
+            // Step 3: Update the JSON payload
+            const myJSON = {
+                customer: userInfo.id,  // Assuming userInfo.id is the customer ID
+                id:userInfo.id,
+                appointmentDate: formattedDate,
+                appointmentTime: formattedTime,
+                appointmentType: service
+            };
+
+            // Log the payload to the console to ensure it's correctly formatted
+            console.log("Sending payload:", myJSON);
+
+            // Step 4: Convert the JavaScript object to a JSON string
+            const values = JSON.stringify(myJSON);
+
+            // Step 5: Send the updated JSON payload to the backend
+            const response = await axios.post(apiEndpoint, values, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+            // Log the response
+            console.log("Backend response:", response);
+        } catch (error) {
+            // Log the error
+            console.error("An error occurred:", error);
+        }
+    };
+
+// Run the function to test
+
+
+
+
+    const handleBookSubmit = () => {
 	console.log("Selected Date: " + selectedDate);
 	console.log("Service: " + service);
 	console.log("Time: " + time);
-
+submitAppointment()
 	handleModalClose();
   }
+
 
   const handleModalClose = () => {
     setModalOpen(false);
@@ -59,6 +109,8 @@ const DKAppointment = () => {
       backgroundColor: "#ccc",
     };
   });
+console.log(userInfo)
+
 
   return (
     <div style={{ maxWidth: "800px", margin: "30px auto 50px" }}>

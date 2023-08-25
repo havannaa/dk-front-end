@@ -3,7 +3,7 @@ import {ThemeProvider, useTheme} from '@mui/material/styles';
 import {Card, CardContent, CardHeader, CardMedia, Container, Grid, Typography} from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Button from "@mui/material/Button";
- import  CAT from "/dist/assets/cartchem3.png"
+import CAT from "/dist/assets/cartchem3.png"
 import CAT1 from "/dist/assets/cat_chem1.png"
 //import CAT2 from "/dist/assets/catchem2.png"
 import FUR from "/dist/assets/furmonster3d.png"
@@ -11,8 +11,7 @@ import BASS from "/dist/assets/kingstripper.png"
 import TRUCK from "/dist/assets/truck_trailer.png"
 import TRUCK1 from "/dist/assets/truck_trailer1.png"
 import UFO from "/dist/assets/ufo_trash.png"
-//import YARD from "/dist/assets/yardCleanup.png"
-//import YARD1 from "/dist/assets/yard_clean.png"
+
 
 const blogPosts = [
     {
