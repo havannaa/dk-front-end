@@ -10,6 +10,7 @@ import {Button, Card, CardHeader, Divider, MenuItem, Select, TextField,} from "@
 import {useAppSelector} from "../../redux/hooks";
 import axios from "axios";
 import moment from 'moment';
+import {Link} from "react-router-dom";
 
 const DKAppointment = () => {
     const userInfo = useAppSelector(state => state.userInfo)
@@ -31,20 +32,29 @@ const DKAppointment = () => {
 
   const [disabledDates] = useState(["2023-04-12", "2023-04-13"]);
 
-  const dateClickHandler = (info: { dateStr: string | React.SetStateAction<null>; }) => {
-    if (disabledDates.includes(info.dateStr as string)) {
-      setSelectedDate(info.dateStr as any);
-      setModalOpenDisabledDates(true);
-    } else {
-      setSelectedDate(info.dateStr as any);
-      setModalOpen(true);
-    }
-  };
+    const dateClickHandler = (info) => {
+        // Step 1: Check if user is logged in
+        if (userInfo && userInfo.id) {
+            // User is logged in, proceed as usual
+            if (disabledDates.includes(info.dateStr)) {
+                setSelectedDate(info.dateStr);
+                setModalOpenDisabledDates(true);
+            } else {
+                setSelectedDate(info.dateStr);
+                setModalOpen(true);
+            }
+        } else {
+            // User is not logged in, prompt them to go to login page
+            alert("Please log in to book an appointment. Redirecting to login page...");
+            window.location.href = "/login"; // Redirect to login page
+        }
+    };
+
 
     const submitAppointment = async () => {
         try {
             // Step 1: Verify the API Endpoint
-            const apiEndpoint = "http://localhost:5000/api/appointments"; // Make sure this matches with your Postman endpoint
+            const apiEndpoint = "http://localhost:5000/api/appointments/create-appointment"; // Make sure this matches with your Postman endpoint
 
             // Step 2: Format the date and time to match the backend's expected format
             const formattedDate = moment(selectedDate).format("DD-MM-YYYY");
@@ -114,7 +124,15 @@ console.log(userInfo)
 
   return (
     <div style={{ maxWidth: "800px", margin: "30px auto 50px" }}>
-	  <h1 style={{textAlign: 'center', paddingLeft: "100px", paddingBottom: "25px"}}> Book our Service </h1>
+        {userInfo && userInfo.id ? (  // Check if userInfo.id exists
+            <h1 style={{ textAlign: 'center', paddingLeft: "100px", paddingBottom: "25px" }}>
+                Book our Service
+            </h1>
+        ) : (
+            <h1 style={{ textAlign: 'center', paddingLeft: "100px", paddingBottom: "25px" }}>
+                <Link to="/login">Click here to Login or Create an account</Link>
+            </h1>
+        )}
       <Fullcalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
         initialView={"dayGridMonth"}
@@ -207,13 +225,17 @@ console.log(userInfo)
             <MenuItem value="time" disabled>
               Select Time
             </MenuItem>
-            <MenuItem value="6am">6 AM</MenuItem>
-            <MenuItem value="7am">7 AM</MenuItem>
             <MenuItem value="8am">8 AM</MenuItem>
             <MenuItem value="9am">9 AM</MenuItem>
             <MenuItem value="10am">10 AM</MenuItem>
             <MenuItem value="11am">11 AM</MenuItem>
-            <MenuItem value="12pm">12 PM</MenuItem>
+            <MenuItem value="12am">12 PM</MenuItem>
+            <MenuItem value="1pm">1 PM</MenuItem>
+            <MenuItem value="2pm">2 PM</MenuItem>
+              <MenuItem value="3pm">3 PM</MenuItem>
+                <MenuItem value="4pm">4 PM</MenuItem>
+              <MenuItem value="5pm">5 PM</MenuItem>
+                <MenuItem value="6pm">6 PM</MenuItem>
           </Select>
           <Typography
             id="modal-title"

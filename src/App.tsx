@@ -19,6 +19,7 @@ import Encoded_GMaps from "./components/google/EncodedG_Maps";
 import NavBottom from "./components/navBottom/NavBottom";
 // @ts-ignore
 import Blog from "./components/blog/Blog";
+import Service from "./components/service/Service";
 function App() {
 const screenTitle = useAppSelector(state => state.title)
 
@@ -42,6 +43,7 @@ const screenTitle = useAppSelector(state => state.title)
 				<Route path='/maps' element={<G_Maps/>} />
 				<Route path='/emaps' element={<Encoded_GMaps/>} />
 				<Route path='/blog' element={<Blog/>} />
+				<Route path='services' element={<Service/>} />
 				<Route path="*" element={<h1>Not Found</h1>} />
 
 			</Routes>

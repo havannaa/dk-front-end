@@ -11,7 +11,7 @@ const NavBottom = () => {
           </Link>
 	  </Box>
       <Typography align="center" variant="body1" sx={{ fontWeight: 300 }}>
-		Let's make Northumberland a better place for our children!
+		Let's Keep the Northern Neck Wonderful!
       </Typography>
     </Box>
   );
