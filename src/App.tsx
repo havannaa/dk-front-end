@@ -20,6 +20,7 @@ import NavBottom from "./components/navBottom/NavBottom";
 // @ts-ignore
 import Blog from "./components/blog/Blog";
 import Service from "./components/service/Service";
+import OurStory from "./components/ourStory/OurStory";
 function App() {
 const screenTitle = useAppSelector(state => state.title)
 
@@ -44,6 +45,7 @@ const screenTitle = useAppSelector(state => state.title)
 				<Route path='/emaps' element={<Encoded_GMaps/>} />
 				<Route path='/blog' element={<Blog/>} />
 				<Route path='services' element={<Service/>} />
+				<Route path='story' element={<OurStory/>} />
 				<Route path="*" element={<h1>Not Found</h1>} />
 
 			</Routes>

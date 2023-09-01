@@ -22,7 +22,7 @@ const Navbar = () => {
 
   const MenuItems = [
     { Name: "Services", Link: "/services" },
-    { Name: "Our Story", Link: "#" },
+    { Name: "Our Story", Link: "/story" },
     { Name: "View Schedule", Link: "/appointment"  },
     { Name: "My Account", Link: user.id ? "/dashboard" : "/login" },
     { Name: "Blog/News", Link: '/blog' },
