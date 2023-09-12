@@ -1,6 +1,6 @@
 import {Avatar, Box, Card, CardContent, Grid, Typography} from "@mui/material";
 import React from "react";
-import Bishop from '/dist/assets/Bishop.jpg';
+import Bishop from '/Bishop-e3dcf521.jpg';
 
 const teamMembers = [
   { name: 'Bishop Walker', designation: 'Owner/CEO', image: Bishop },

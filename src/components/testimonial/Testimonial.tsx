@@ -1,7 +1,7 @@
 import {Avatar, Box, Card, CardContent, Grid, Typography} from '@mui/material';
-import dirty from '/dist/assets/dirty_yard.jpg';
-import yard_clean from '/dist/assets/yarn_clean.png';
-import yard_clean1 from '/dist/assets/yarnCleanup.png';
+import dirty from '/dirty_yard-b272813f.jpg';
+import yard_clean from '/yarn_clean-f205d94a.png';
+import yard_clean1 from '/yarnCleanup-de6f1abd.png';
 const testimonials = [
   {
     name: '-- Emily Brown, Building Owner',

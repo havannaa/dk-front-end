@@ -3,14 +3,14 @@ import {ThemeProvider, useTheme} from '@mui/material/styles';
 import {Card, CardContent, CardHeader, CardMedia, Container, Grid, Typography} from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Button from "@mui/material/Button";
-import CAT from "/dist/assets/cartchem3.png"
-import CAT1 from "/dist/assets/cat_chem1.png"
-//import CAT2 from "/dist/assets/catchem2.png"
-import FUR from "/dist/assets/furmonster3d.png"
-import BASS from "/dist/assets/kingstripper.png"
-import TRUCK from "/dist/assets/truck_trailer.png"
-import TRUCK1 from "/dist/assets/truck_trailer1.png"
-import UFO from "/dist/assets/ufo_trash.png"
+import CAT from "/cartchem3-d0fffe7a.png"
+import CAT1 from "/cat_chem1-24b0ae96.png"
+//import CAT2 from "/catchem2.png"
+import FUR from "/furmonster3d-fd7f35f2.png"
+import BASS from "/kingstripper-a07c0608.png"
+import TRUCK from "/truck_trailer-517eec13.png"
+import TRUCK1 from "/truck_trailer1-a6af3c75.png"
+import UFO from "/ufo_trash-43dbeea5.png"
 
 
 const blogPosts = [
