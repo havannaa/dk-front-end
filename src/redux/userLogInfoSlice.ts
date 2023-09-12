@@ -56,20 +56,16 @@ export const userLogInfoSlice = createSlice({
     }
 });
 
-export const updateToken = (token: any) => async () => {
-    await axios.post( ` http://localhost:5000/auth/nngc/confirm?${token}`)
+export const updateToken = (token: any) => async (dispatch: any) => {
+    await axios.post(`http://localhost:5000/auth/nngc/confirm?${token}`)
         .then((response) => {
-            response.data.customer
-          // store.dispatch({type: 'updateToken', payload: response.data.customer})
-            const dispatch = useAppDispatch()
-            dispatch(updateToken(response.data.customer))
-            console.log(response.data.customer)
-
+            dispatch(updateToken(response.data.customer));
+            console.log(response.data.customer);
         })
         .catch((error) => {
-            console.log(error)
-        })
-}
+            console.log(error);
+        });
+};
 
 
 export const {changeUserLogInfo, addToken, clearUserInfo} = userLogInfoSlice.actions;

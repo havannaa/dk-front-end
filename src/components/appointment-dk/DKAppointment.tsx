@@ -15,7 +15,7 @@ import {Link} from "react-router-dom";
 const DKAppointment = () => {
     const userInfo = useAppSelector(state => state.userInfo)
 
-    const [selectedDate, setSelectedDate] = useState(null);
+    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalOpenDisabledDates, setModalOpenDisabledDates] = useState(false);
 
@@ -32,15 +32,15 @@ const DKAppointment = () => {
 
   const [disabledDates] = useState(["2023-04-12", "2023-04-13"]);
 
-    const dateClickHandler = (info) => {
+    const dateClickHandler = (info: { dateStr: string | React.SetStateAction<Date | null>; }) => {
         // Step 1: Check if user is logged in
         if (userInfo && userInfo.id) {
             // User is logged in, proceed as usual
-            if (disabledDates.includes(info.dateStr)) {
-                setSelectedDate(info.dateStr);
+            if (disabledDates.includes(info.dateStr as string)) {
+                setSelectedDate(info.dateStr as any);
                 setModalOpenDisabledDates(true);
             } else {
-                setSelectedDate(info.dateStr);
+                setSelectedDate(info.dateStr as any);
                 setModalOpen(true);
             }
         } else {

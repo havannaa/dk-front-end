@@ -20,7 +20,10 @@ import NavBottom from "./components/navBottom/NavBottom";
 // @ts-ignore
 import Blog from "./components/blog/Blog";
 import Service from "./components/service/Service";
-import OurStory from "./components/ourStory/OurStory";
+import OurStory from "./components/ourStory/OurStory.jsx";
+import { PersistGate } from 'redux-persist/integration/react';
+import SuccessPage from "./components/checkout/SuccessPage";
+
 function App() {
 const screenTitle = useAppSelector(state => state.title)
 
@@ -29,6 +32,7 @@ const screenTitle = useAppSelector(state => state.title)
 	}, [screenTitle])
   return (
     <div className="App">
+
 		<HeaderTop />
 		<Navbar />
 		<NavBottom />
@@ -46,6 +50,7 @@ const screenTitle = useAppSelector(state => state.title)
 				<Route path='/blog' element={<Blog/>} />
 				<Route path='services' element={<Service/>} />
 				<Route path='story' element={<OurStory/>} />
+				<Route path='/success' element={<SuccessPage/>} />
 				<Route path="*" element={<h1>Not Found</h1>} />
 
 			</Routes>
