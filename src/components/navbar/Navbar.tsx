@@ -98,7 +98,9 @@ const Navbar = () => {
                       key={index}
                       onClick={() => setMobileMenuOpen(false)}
                   >
+                    <Link href={item.Link}>
                     <ListItemText primary={item.Name} />
+                    </Link>
                   </ListItem>
               ))}
             </List>
